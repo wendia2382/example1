@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대한민국 보건복지부 (Ministry of Health and Welfare)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #003764; /* 정부 신뢰감 블루 */
+            --primary-light: #0066b2;
+            --accent-green: #00a86b; /* 보건/건강 그린 */
+            --accent-warm: #ff9800;  /* 복지 따뜻한 오렌지 */
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Top Government Bar */
+        .gov-banner {
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
+            padding: 6px 20px;
+            font-size: 0.82rem;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .gov-banner .emblem-mini {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #003764 0%, #0066b2 60%, #00a86b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: 0 3px 6px rgba(0, 55, 100, 0.25);
+        }
+
+        .logo-text h1 {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-sub);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--primary-light);
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-call {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 0.45rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-call:hover {
+            background-color: #bae6fd;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 55, 100, 0.92) 0%, rgba(0, 102, 178, 0.88) 100%), 
+                        url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #e2e8f0;
+            font-weight: 300;
+            margin-bottom: 2.2rem;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 0.75rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 168, 107, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #008f5a;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 0.75rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Container Standard */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4.5rem 1.5rem;
+        }
+
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 4px;
+            background-color: var(--primary-light);
+            margin: 14px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Mission & Vision (Cards) */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .vision-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.2rem 1.8rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-light);
+        }
+
+        .vision-card.accent-green::before { background: var(--accent-green); }
+        .vision-card.accent-warm::before { background: var(--accent-warm); }
+
+        .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            background: #eff6ff;
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .vision-card.accent-green .card-icon {
+            background: #ecfdf5;
+            color: var(--accent-green);
+        }
+        .vision-card.accent-warm .card-icon {
+            background: #fff7ed;
+            color: var(--accent-warm);
+        }
+
+        .vision-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .vision-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Key Tasks Section */
+        .tasks-bg {
+            background-color: var(--white);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .task-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .task-item {
+            display: flex;
+            gap: 1.2rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .task-badge-num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .task-content h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .task-content p {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            line-height: 1.55;
+        }
+
+        /* Quick Service Links */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-box {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1.6rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-box:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-box-icon {
+            font-size: 2.2rem;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        .service-box h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .service-box p {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        /* Organization & Structure */
+        .org-card {
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .org-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .org-unit {
+            padding: 1.2rem;
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-light);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .org-unit strong {
+            display: block;
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 0.3rem;
+        }
+
+        .org-unit span {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        /* Notice & News Section */
+        .notice-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .notice-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .notice-board {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .notice-board h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-list li {
+            padding: 0.85rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+
+        .notice-title {
+            color: var(--text-main);
+            text-decoration: none;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-right: 15px;
+        }
+        .notice-title:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        .notice-date {
+            color: var(--text-sub);
+            font-size: 0.82rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #003764 0%, #004c8c 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .call-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .contact-card p {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 1.5rem 2rem;
+            font-size: 0.88rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-info p {
+            margin-bottom: 0.4rem;
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 대한민국 정부 상단 바 -->
+    <div class="gov-banner">
+        <div class="emblem-mini">
+            <i class="fa-solid fa-landmark"></i> 대한민국 정부 공식 기관
+        </div>
+        <div>
+            <span>세종특별자치시 도움4로 13 정부세종청사 10동</span>
+        </div>
+    </div>
+
+    <!-- 네비게이션 헤더 -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>보건복지부</h1>
+                    <span>Ministry of Health and Welfare</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">기관소개</a></li>
+                <li><a href="#missions">핵심비전</a></li>
+                <li><a href="#tasks">주요업무</a></li>
+                <li><a href="#services">대민서비스</a></li>
+                <li><a href="#organization">조직안내</a></li>
+            </ul>
+            <a href="tel:129" class="btn-call">
+                <i class="fa-solid fa-phone"></i> 보건복지상담 129
+            </a>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="badge-tag"><i class="fa-solid fa-shield-heart"></i> 국민과 함께 만드는 따뜻한 동행</span>
+            <h2>더 행복하고 건강한 내일을 위한<br>든든한 사회보장과 보건의료</h2>
+            <p>보건복지부는 요람에서 무덤까지, 모든 국민이 차별 없이 건강하고 존엄한 삶을 누릴 수 있도록<br>두터운 약자복지와 튼튼한 필수의료 안전망을 구축하고 있습니다.</p>
+            <div class="hero-actions">
+                <a href="#services" class="btn-primary"><i class="fa-solid fa-hand-holding-heart"></i> 주요 복지·의료 서비스 찾기</a>
+                <a href="#about" class="btn-secondary"><i class="fa-solid fa-circle-info"></i> 기관 소개 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 기관 소개 및 비전 -->
+    <section class="container" id="about">
+        <div class="section-title-wrap">
+            <div class="section-subtitle">ABOUT MOHW</div>
+            <h2 class="section-title">비전 및 핵심 정책 가치</h2>
+        </div>
+        <div class="vision-grid" id="missions">
+            <div class="vision-card">
+                <div class="card-icon">
+                    <i class="fa-solid fa-people-roof"></i>
+                </div>
+                <h3>약자복지 강화</h3>
+                <p>기초생활보장 강화와 사각지대 발굴 체계 고도화로 생계 위기가구를 적극 발굴하고, 취약계층에 대한 맞춤형 지원을 촘촘하게 확대합니다.</p>
+            </div>
+            <div class="vision-card accent-green">
+                <div class="card-icon">
+                    <i class="fa-solid fa-hospital-user"></i>
+                </div>
+                <h3>필수의료 및 보건안전망</h3>
+                <p>지역완결형 필수의료체계를 구축하고, 소아·응급·중증의료 등 생명과 직결된 의료 인프라를 혁신하여 국민 생명 건강을 안전하게 지킵니다.</p>
+            </div>
+            <div class="vision-card accent-warm">
+                <div class="card-icon">
+                    <i class="fa-solid fa-children"></i>
+                </div>
+                <h3>저출생·초고령사회 대응</h3>
+                <p>아이를 낳고 기르기 편한 양육친화적 환경 조성과 더불어, 어르신이 살던 곳에서 편안한 노후를 보낼 수 있는 통합돌봄 체계를 구축합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 주요 업무 -->
+    <section class="tasks-bg" id="tasks">
+        <div class="container">
+            <div class="section-title-wrap">
+                <div class="section-subtitle">MAJOR RESPONSIBILITIES</div>
+                <h2 class="section-title">보건복지부의 4대 핵심 분야</h2>
+            </div>
+            <div class="task-list">
+                <div class="task-item">
+                    <div class="task-badge-num">1</div>
+                    <div class="task-content">
+                        <h4>보건의료 및 질병 관리</h4>
+                        <p>국민건강보험 제도 운영, 의료전달체계 개선, 의약품 및 의료기기 산업 육성, 암·만성질환 예방관리 및 정신건강 증진 정책을 총괄합니다.</p>
+                    </div>
+                </div>
+                <div class="task-item">
+                    <div class="task-badge-num">2</div>
+                    <div class="task-content">
+                        <h4>사회복지 및 빈곤 대책</h4>
+                        <p>국민기초생활보장제도, 긴급복지지원, 사회보장기본계획 수립 등을 통해 누구도 소외되지 않는 기본 생활 안정망을 든든히 뒷받침합니다.</p>
+                    </div>
+                </div>
+                <div class="task-item">
+                    <div class="task-badge-num">3</div>
+                    <div class="task-content">
+                        <h4>인구 정책 및 아동·보육</h4>
+                        <p>부모급여 지급, 영유아 보육 인프라 질적 개선, 취약계층 아동 보호 및 입양 정책 등 아이들의 건강한 성장을 다각도로 지원합니다.</p>
+                    </div>
+                </div>
+                <div class="task-item">
+                    <div class="task-badge-num">4</div>
+                    <div class="task-content">
+                        <h4>노인복지 및 국민연금</h4>
+                        <p>국민연금 제도의 지속가능성 제고와 기초연금 지원, 노인일자리 확대, 노인맞춤돌봄 및 장기요양보험 운영으로 품격 있는 노후를 지원합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 대민 주요 서비스 바로가기 -->
+    <section class="container" id="services">
+        <div class="section-title-wrap">
+            <div class="section-subtitle">PUBLIC SERVICES</div>
+            <h2 class="section-title">국민을 위한 대표 포털 및 서비스</h2>
+        </div>
+        <div class="services-grid">
+            <a href="https://www.bokjiro.go.kr" target="_blank" class="service-box">
+                <i class="fa-solid fa-house-chimney-window service-box-icon"></i>
+                <h4>복지로 (Bokjiro)</h4>
+                <p>나에게 맞는 복지서비스 모의계산 및 온라인 복지급여 간편 신청</p>
+            </a>
+            <a href="https://www.nhis.or.kr" target="_blank" class="service-box">
+                <i class="fa-solid fa-notes-medical service-box-icon"></i>
+                <h4>국민건강보험공단</h4>
+                <p>건강보험 자격확인, 보험료 납부, 국가건강검진 안내 및 결과 조회</p>
+            </a>
+            <a href="https://www.nps.or.kr" target="_blank" class="service-box">
+                <i class="fa-solid fa-piggy-bank service-box-icon"></i>
+                <h4>국민연금공단</h4>
+                <p>내 연금 알아보기, 가입내역 조회, 노령연금·유족연금 청구 및 상담</p>
+            </a>
+            <a href="https://www.longtermcare.or.kr" target="_blank" class="service-box">
+                <i class="fa-solid fa-wheelchair service-box-icon"></i>
+                <h4>노인장기요양보험</h4>
+                <p>거동이 불편한 어르신을 위한 등급판정 및 재가·시설 급여 지원 안내</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- 조직 체계 -->
+    <section class="tasks-bg" id="organization">
+        <div class="container">
+            <div class="section-title-wrap">
+                <div class="section-subtitle">ORGANIZATION</div>
+                <h2 class="section-title">조직 구성</h2>
+            </div>
+            <div class="org-card">
+                <p style="text-align:center; color:var(--text-sub); margin-bottom: 1.5rem;">
+                    보건복지부는 장관과 2명의 차관(제1차관: 기획조정·복지분야, 제2차관: 보건의료분야)을 중심으로 구성되어 있습니다.
+                </p>
+                <div class="org-items">
+                    <div class="org-unit">
+                        <strong>제1차관 소관 (복지)</strong>
+                        <span>기획조정실, 복지정책관, 사회복지정책실, 인구아동정책관, 노인정책관 등</span>
+                    </div>
+                    <div class="org-unit">
+                        <strong>제2차관 소관 (보건의료)</strong>
+                        <span>보건의료정책실, 건강보험정책국, 보건산업정책국, 공공보건정책관 등</span>
+                    </div>
+                    <div class="org-unit">
+                        <strong>소속 및 산하기관</strong>
+                        <span>질병관리청, 국립재활원, 국립병원, 한국보건산업진흥원, 사회보장정보원 등</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 상담센터 및 최근 안내 -->
+    <section class="container">
+        <div class="notice-container">
+            <div class="notice-board">
+                <h3><span><i class="fa-regular fa-bell"></i> 주요 알림 및 공지사항</span> <small style="font-size:0.8rem; font-weight:normal; color:var(--text-sub);">최근 소식</small></h3>
+                <ul class="notice-list">
+                    <li>
+                        <a href="#" class="notice-title">[복지정책] 2026년 기준 중위소득 및 기초생활보장 급여 인상 안내</a>
+                        <span class="notice-date">2026.11.15</span>
+                    </li>
+                    <li>
+                        <a href="#" class="notice-title">[보건의료] 필수의료 혁신 및 소아·응급의료 전달체계 보강 시행</a>
+                        <span class="notice-date">2026.11.10</span>
+                    </li>
+                    <li>
+                        <a href="#" class="notice-title">[노인복지] 겨울철 취약계층 어르신 맞춤돌봄 및 한파대비 집중보호</a>
+                        <span class="notice-date">2026.11.04</span>
+                    </li>
+                    <li>
+                        <a href="#" class="notice-title">[아동지원] 부모급여 및 돌봄서비스 지원 확대 세부 계획 공고</a>
+                        <span class="notice-date">2026.10.28</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-card">
+                <h3><i class="fa-solid fa-headset"></i> 보건복지상담센터</h3>
+                <div class="call-number">국번없이 129</div>
+                <p>365일 24시간 언제나 열려있습니다. 위기상황 복지상담, 기초생활보장, 긴급의료지원 등 전문 상담사가 친절히 안내해 드립니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-links">
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">저작권정책</a>
+                    <a href="#">정보공개</a>
+                    <a href="#">정부세종청사 찾아오시는 길</a>
+                </div>
+                <div>
+                    <span style="color:#e2e8f0;"><i class="fa-solid fa-phone-volume"></i> 대표전화 044-202-2114</span>
+                </div>
+            </div>
+            <div class="footer-info">
+                <p>(우 30113) 세종특별자치시 도움4로 13 정부세종청사 10동 보건복지부</p>
+                <p>본 웹페이지는 대한민국 보건복지부의 정책과 사업을 한눈에 볼 수 있도록 구성한 소개 단일 페이지입니다.</p>
+                <div class="copyright">Copyright &copy; Ministry of Health and Welfare. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
